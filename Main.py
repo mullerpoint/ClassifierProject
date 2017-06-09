@@ -15,10 +15,10 @@
 # Imports
 ##########################################################
 
-import numpy as np                                                  # Used For Statistics Functions
-import pandas as pd                                                 # Used to store data
-from nltk.tag import pos_tag
-from nltk.tokenize import word_tokenize
+import numpy as np                          # Used For Statistics Functions
+import pandas as pd                         # Used to store data
+from nltk.tag import pos_tag                # Used to tag words with their part of speech
+from nltk.tokenize import word_tokenize     # Used to tokenize text down to words
 
 
 ##########################################################
@@ -33,7 +33,7 @@ def main():
 
     print(df.text_heading)  # DEBUG
 
-    # tokenize the clean text
+    # Tokenize the text and save the list of tokens as a new column
     token_list = []
     for row in df['text_heading']:
         token_list.append(tokenize(row))
@@ -41,8 +41,8 @@ def main():
 
     print(df['tokens'])  # DEBUG
 
+    # Get the number of tokens in each row and save the number as a new column
     len_list = []
-    # get length
     for row in df['tokens']:
         len_list.append(len(row))
     df['text_length'] = len_list
@@ -54,6 +54,14 @@ def main():
     # TODO
 
     print(df['text_length'])  # DEBUG
+
+    # Make determination of Generic/Specific based on clusters and save as a column
+    # TODO
+
+
+##########################################################
+# Functions
+##########################################################
 
 
 def tokenize(in_string):
