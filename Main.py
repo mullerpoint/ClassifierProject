@@ -10,6 +10,7 @@
 #
 ##########################################################
 
+
 ##########################################################
 # Imports
 ##########################################################
@@ -19,39 +20,40 @@ import pandas as pd                                                 # Used to st
 from nltk.tag import pos_tag
 from nltk.tokenize import word_tokenize
 
+
 ##########################################################
 # Main
 ##########################################################
+
+
 def main():
     # open the excel file and parse the first sheet to a dataframe
     xls_file = pd.ExcelFile("./Context_Extraction.xlsx")
     df = xls_file.parse('Final')
 
-    #print(df.text_heading) #DEBUG
-
-    # Create a clean version of the text with all extra symbols stripped out
-    #df['cleantext'] = clean_text(df['text_heading'])
+    print(df.text_heading)  # DEBUG
 
     # tokenize the clean text
     token_list = []
-
     for row in df['text_heading']:
         token_list.append(tokenize(row))
     df['tokens'] = token_list
+
+    print(df['tokens'])  # DEBUG
 
     len_list = []
     # get length
     for row in df['tokens']:
         len_list.append(len(row))
-    df['text_legnth'] = len_list
+    df['text_length'] = len_list
 
     # Count verbs
-    #df['verb_count'] = count_verbs(df['tokens'])
+    # df['verb_count'] = count_verbs(df['tokens'])
 
-    #Do clustering analysis
-    #TODO
+    # do clustering analysis
+    # TODO
 
-    print(df['text_length'])
+    print(df['text_length'])  # DEBUG
 
 
 def tokenize(in_string):
@@ -60,7 +62,7 @@ def tokenize(in_string):
 
 
 def count_verbs():
-    #TODO
+    # TODO
     return -1
 
 
